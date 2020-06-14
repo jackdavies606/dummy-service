@@ -16,8 +16,13 @@ withPod {
 
     checkout scm
 
+
     container('docker') {
-      stage('Build') {
+      stage('Package') {
+        sh("./mvnw package")
+      }
+
+      stage('Docker build') {
         sh("docker build -t ${service} .")
       }
     }
