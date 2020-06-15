@@ -20,6 +20,9 @@ withPod {
 
     container('docker') {
       stage('Package') {
+        sh("ls /usr/")
+        sh("ls /usr/java")
+        sh("ls /usr/java/latest")
         sh("./mvnw package")
       }
 
