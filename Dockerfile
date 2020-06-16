@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+#FROM openjdk:8-jdk-alpine todo: need this??
 
 # this isn't going to work if im running this on a container..
 # i've got a container, should I build the app on the container?
