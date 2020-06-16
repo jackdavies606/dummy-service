@@ -21,6 +21,7 @@ withPod {
     container('docker') {
       stage('Package') {
         sh("ls")
+        sh("pwd")
 //         sh("ls /usr/bin/")
 //         sh("ls /usr/bin/java/")
         sh("mvn package")
