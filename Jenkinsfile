@@ -20,10 +20,10 @@ withPod {
 
     container('docker') {
       stage('Package') {
-//         sh("ls /usr/")
+        sh("ls")
 //         sh("ls /usr/bin/")
 //         sh("ls /usr/bin/java/")
-        sh("./mvnw package")
+        sh("mvn package")
       }
 
       stage('Docker build') {
