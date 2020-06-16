@@ -1,7 +1,7 @@
 def withPod(body) {
   podTemplate(label: 'pod', serviceAccount: 'jenkins', containers: [
-      containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat'),
-      containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
+//       containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat'),
+      containerTemplate(name: 'docker', image: 'maven:3.3.9-jdk-8-alpine', command: 'cat', ttyEnabled: true),
       containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', command: 'cat', ttyEnabled: true)
     ],
     volumes: [
@@ -20,9 +20,9 @@ withPod {
 
     container('docker') {
       stage('Package') {
-        sh("ls /usr/")
-        sh("ls /usr/bin/")
-        sh("ls /usr/bin/java/")
+//         sh("ls /usr/")
+//         sh("ls /usr/bin/")
+//         sh("ls /usr/bin/java/")
         sh("./mvnw package")
       }
 
