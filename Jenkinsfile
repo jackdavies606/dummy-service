@@ -22,6 +22,7 @@ withPod {
       stage('Package') {
         sh("ls && echo jenkinsss")
         sh("pwd && echo jenkinsss")
+        sh("./mvnw clean")
 //         sh("ls /usr/bin/")
 //         sh("ls /usr/bin/java/")
 //         sh("mvn package")
