@@ -22,7 +22,7 @@ withPod {
       stage('Package') {
         sh("ls && echo jenkinsss")
         sh("pwd && echo jenkinsss")
-        sh("./mvnw clean")
+//         sh("./mvnw clean") <--- this doesn't work, it looks for /root/.m2
 //         sh("ls /usr/bin/")
 //         sh("ls /usr/bin/java/")
 //         sh("mvn package")

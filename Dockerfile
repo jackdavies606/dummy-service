@@ -37,5 +37,14 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 #ARG JAR_FILE=target/*.jar
 #COPY ${JAR_FILE} app.jar
 
+#ARG PROJECT=/home/jenkins/agent/workspace/dummy-service_master
+#COPY ${PROJECT} app/
+
+ADD . /app
+WORKDIR /app
+RUN mvn clean package
+RUN ls
+RUN cd target/ && java -jar dummy-service-0.0.1-SNAPSHOT.jar
+
 RUN pwd && ls
 #ENTRYPOINT ["java","-jar","/app.jar"]
