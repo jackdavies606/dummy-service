@@ -20,8 +20,8 @@ withPod {
 
     container('docker') {
       stage('Package') {
-        sh("(jenkins) ls")
-        sh("(jenkins) pwd")
+        sh("ls && echo jenkinsss")
+        sh("pwd && echo jenkinsss")
 //         sh("ls /usr/bin/")
 //         sh("ls /usr/bin/java/")
 //         sh("mvn package")
