@@ -20,11 +20,11 @@ withPod {
 
     container('docker') {
       stage('Package') {
-        sh("ls")
-        sh("pwd")
+        sh("(jenkins) ls")
+        sh("(jenkins) pwd")
 //         sh("ls /usr/bin/")
 //         sh("ls /usr/bin/java/")
-        sh("mvn package")
+//         sh("mvn package")
       }
 
       stage('Docker build') {
@@ -33,3 +33,6 @@ withPod {
     }
   }
 }
+
+// TODO !!!!! --> just implement this as a normal pipeline rather than this shitty
+// jenkins plugin https://plugins.jenkins.io/kubernetes/
