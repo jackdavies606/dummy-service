@@ -1,7 +1,7 @@
 def withPod(body) {
   podTemplate(label: 'pod', serviceAccount: 'jenkins', containers: [
 //       containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat'),
-      containerTemplate(name: 'docker', image: 'maven:3.3.9-jdk-8-alpine', command: 'cat', ttyEnabled: true),
+      containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
       containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl', command: 'cat', ttyEnabled: true)
     ],
     volumes: [
@@ -22,6 +22,7 @@ withPod {
       stage('Package') {
         sh("ls && echo jenkinsss")
         sh("pwd && echo jenkinsss")
+
 //         sh("./mvnw clean") <--- this doesn't work, it looks for /root/.m2
 //         sh("ls /usr/bin/")
 //         sh("ls /usr/bin/java/")

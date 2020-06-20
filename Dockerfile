@@ -40,6 +40,8 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 #ARG PROJECT=/home/jenkins/agent/workspace/dummy-service_master
 #COPY ${PROJECT} app/
 
+# todo : no logs coming out of this & it's failing :(
+# this did work locally though..
 ADD . /app
 WORKDIR /app
 RUN mvn clean package
