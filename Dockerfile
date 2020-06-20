@@ -1,3 +1,5 @@
+FROM openjdk:8-jdk-alpine
+
 RUN apk add --no-cache curl tar bash procps
 
 ARG MAVEN_VERSION=3.6.3
@@ -19,7 +21,6 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
-FROM openjdk:8-jdk-alpine
 ADD . /app
 WORKDIR /app
 RUN mvn clean package
