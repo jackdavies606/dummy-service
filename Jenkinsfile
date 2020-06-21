@@ -20,29 +20,20 @@ withPod {
 
     container('maven') {
        stage('Package') {
-          sh("ls && echo DOCKER CONTAINER")
-          sh("pwd && echo DOCKER CONTAINER")
+          sh("ls && echo MAVEN CONTAINER")
+          sh('mvn clean package')
+          sh("ls && echo MAVEN CONTAINER")
        }
     }
 
-
     container('docker') {
-      stage('Package') {
-        sh("ls && echo DOCKER CONTAINER")
-        sh("pwd && echo DOCKER CONTAINER")
-
-//         sh("./mvnw clean") <--- this doesn't work, it looks for /root/.m2
-//         sh("ls /usr/bin/")
-//         sh("ls /usr/bin/java/")
-//         sh("mvn package")
-      }
-
       stage('Docker build') {
+        sh("ls && echo DOCKER CONTAINER")
         sh("docker build -t ${service} .")
+        sh("ls && echo DOCKER CONTAINER")
       }
     }
   }
 }
 
-// TODO !!!!! --> just implement this as a normal pipeline rather than this shitty
 // jenkins plugin https://plugins.jenkins.io/kubernetes/
