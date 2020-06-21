@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+#FROM openjdk:8-jdk-alpine
 
 #RUN apk add --no-cache curl tar bash procps
 
@@ -21,7 +21,13 @@ FROM openjdk:8-jdk-alpine
 #ENV MAVEN_HOME /usr/share/maven
 #ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
-ADD . /app
-WORKDIR /app
-RUN mvn clean package
+#ADD ./*.jar /app
+#WORKDIR /app
+#RUN mvn clean package
+#ENTRYPOINT ["java","-jar","/app.jar"]
+
+
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
