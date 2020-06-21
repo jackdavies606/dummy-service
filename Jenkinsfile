@@ -18,11 +18,18 @@ withPod {
 
     checkout scm
 
+    container('maven') {
+       stage('Package') {
+          sh("ls && echo DOCKER CONTAINER")
+          sh("pwd && echo DOCKER CONTAINER")
+       }
+    }
+
 
     container('docker') {
       stage('Package') {
-        sh("ls && echo jenkinsss")
-        sh("pwd && echo jenkinsss")
+        sh("ls && echo DOCKER CONTAINER")
+        sh("pwd && echo DOCKER CONTAINER")
 
 //         sh("./mvnw clean") <--- this doesn't work, it looks for /root/.m2
 //         sh("ls /usr/bin/")
