@@ -34,6 +34,15 @@ withPod {
         sh("docker build -t ${service} .")
         sh("ls && echo DOCKER CONTAINER")
       }
+
+      def tagToDeploy = "jackdavies606/${service}"
+
+      stage('Publish') {
+        withDockerRegistry(registry: [credentialsId: 'dockerhub']) {
+          sh("docker tag ${service} ${tagToDeploy}")
+          sh("docker push ${tagToDeploy}")
+        }
+      }
     }
   }
 }
