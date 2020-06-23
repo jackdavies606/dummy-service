@@ -20,9 +20,11 @@ withPod {
 
     container('maven') {
        stage('Package') {
-          sh("ls && echo MAVEN CONTAINER")
           sh('mvn clean package')
-          sh("ls && echo MAVEN CONTAINER")
+       }
+
+       stage('Test') {
+        sh("mvn test")
        }
     }
 
