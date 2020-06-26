@@ -1,0 +1,40 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: dummy-service
+spec:
+    replicas: 3
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxUnavailable: 50%
+            maxSurge: 50%
+    template:
+        metadata:
+            labels:
+                app: dummy-service
+                tier: backend
+                track: stable
+        spec:
+            containers:
+                - name: dummy-service
+                  image: BUILD_TAG
+                  resources:
+                      requests:
+                          cpu: 100m
+                          memory: 100Mi
+                  ports:
+                      - containerPort: 8080
+                  livenessProbe:
+                      httpGet:
+                          path: /actuator/health
+                          port: 8000
+                      initialDelaySeconds: 10
+                      timeoutSeconds: 15
+                  readinessProbe:
+                      httpGet:
+                          path: /actuator/health
+                          port: 8080
+                      initialDelaySeconds: 10
+                      timeoutSeconds: 15
