@@ -1,5 +1,5 @@
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: dummy-service
@@ -29,7 +29,7 @@ spec:
                   livenessProbe:
                       httpGet:
                           path: /actuator/health
-                          port: 8000
+                          port: 8080
                       initialDelaySeconds: 10
                       timeoutSeconds: 15
                   readinessProbe:
